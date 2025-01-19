@@ -1,0 +1,33 @@
+{
+  "name": "projet_selection_cda_back",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000C\u0000a\u0000r\u0000a\u0000m\u0000b\u0000a\u0000r\u0000S\u0000e\u0000l\u0000e\u0000c\u0000t\u0000i\u0000o\u0000n\u0000C\u0000D\u0000A\u0000-\u0000B\u0000a\u0000c\u0000k\u0000E\u0000n\u0000d\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nouno3001/CarambarSelectionCDA-BackEnd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nouno3001/CarambarSelectionCDA-BackEnd/issues"
+  },
+  "homepage": "https://github.com/Nouno3001/CarambarSelectionCDA-BackEnd#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "sequelize": "^6.37.5",
+    "sqlite3": "^5.1.7",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
