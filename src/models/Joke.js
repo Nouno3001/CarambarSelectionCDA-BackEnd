@@ -1,7 +1,7 @@
 // src/models/Joke.js , Modèle Sequelize pour les blagues
 
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const sequelize = require("../config/bdd.js");
 
 const Joke = sequelize.define("Joke", {
   content: {
