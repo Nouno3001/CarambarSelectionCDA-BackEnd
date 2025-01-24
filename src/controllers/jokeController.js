@@ -5,9 +5,11 @@ const Joke = require("../models/Joke");
 // Ajouter une blague
 exports.addJoke = async (req, res) => {
   try {
-    const { content } = req.body;
-    const joke = await Joke.create({ content });
-    res.status(201).json(joke);
+    // const { content } = req.body;
+    const { question, answer } = req.body;
+    // const joke = await Joke.create({ content });
+    const newjoke = await Joke.create({ question, answer });
+    res.status(201).json(newJoke);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -27,7 +29,7 @@ exports.getAllJokes = async (req, res) => {
 exports.getJokeById = async (req, res) => {
   try {
     const joke = await Joke.findByPk(req.params.id);
-    if (!joke) return res.status(404).json({ message: "Blague non trouvée" });
+    if (!joke) return res.status(404).json({ error: "Blague non trouvée" });
     res.status(200).json(joke);
   } catch (error) {
     res.status(500).json({ error: error.message });

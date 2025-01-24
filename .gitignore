@@ -1,2 +1,74 @@
+# Node.js
+# Ignorer le dossier node_modules dans le back-end
+# Exclut les dépendances installées via npm
 node_modules/
-*.sqlite
+
+# SQLite
+# Fichiers de base de données SQLite
+*.sqlite   
+# Autres extensions possibles pour SQLite
+*.sqlite3        
+
+# Ignorer le dossier node_modules dans le front-end
+client/node_modules/
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production Ignorer les répertoires de build
+# Si vous générez un dossier dist pour déploiement
+/dist
+dist/
+# Dossier créé lors du déploiement Frontend
+build/
+/build
+client/build/
+
+# Ignorer les fichiers spécifiques à l'IDE
+.vscode/
+.idea/
+
+#Ignorer Système de fichiers de sauvegarde
+# misc
+.DS_Store
+# Fichiers créés par Windows
+Thumbs.db 
+
+# Variables d'environnement sensibles (ex : infos de BDD)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignorer les fichiers d'environnement
+.env
+client/.env
+
+# Ignorer les fichiers de Logs et erreurs (souvent volumineux et inutiles)
+logs/
+# Fichiers de logs générés par votre app
+*.log 
+
+# Logs de debug éventuels
+debug.log       
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignorer tous les fichiers vidéos mp4 dans le dossier Assets/Videos
+src/assets/videos/*
+
+# Ignorer tous les liens vidéos mp4 , avi,mov, zip
+*webm
+*.mp3
+*.mp4
+*.avi
+*.mov
+*.zip
+
