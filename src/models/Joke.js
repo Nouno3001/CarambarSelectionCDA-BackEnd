@@ -6,7 +6,7 @@ const sequelize = require("../config/bdd.js");
 const Joke = sequelize.define("Joke", {
   content: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false, // Empêche d'insérer une blague vide
   },
   answer: {
     type: DataTypes.STRING,
