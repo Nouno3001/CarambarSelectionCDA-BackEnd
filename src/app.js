@@ -1,6 +1,7 @@
 const express = require("express");
+const path = require("path");
 const bodyParser = require("body-parser");
-const cors = require('cors');
+const cors = require("cors");
 const jokeRoutes = require("./routes/jokeRoutes");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger/swagger.json");
@@ -8,6 +9,18 @@ require("dotenv").config();
 
 const app = express();
 
+// Définir le moteur de vue sur Pug
+app.set("view engine", "pug");
+
+// Définir le répertoire des vues
+app.set("views", path.join(__dirname, "views"));
+
+app.get("/", (req, res) => {
+  res.render("index", {
+    title: "Accueil",
+    message: "Bienvenue sur notre site!",
+  });
+});
 app.use(cors());
 
 app.use(bodyParser.json());
