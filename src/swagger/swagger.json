@@ -1,0 +1,33 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API Carambar",
+    "description": "Documentation de l'API pour récupérer des blagues Carambar"
+  },
+  "paths": {
+    "/blagues": {
+      "get": {
+        "summary": "Récupérer une blague",
+        "responses": {
+          "200": {
+            "description": "Une blague aléatoire",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "joke": {
+                  "type": "string",
+                  "example": "Pourquoi les plongeurs plongent-ils toujours en arrière et jamais en avant ?"
+                },
+                "answer": {
+                  "type": "string",
+                  "example": "Parce que s'ils plongent en avant, ils tombent dans l'eau !"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
