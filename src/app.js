@@ -21,6 +21,27 @@ app.get("/", (req, res) => {
     message: "Bienvenue sur notre site!",
   });
 });
+
+// Middleware
+
+// Middleware pour logger les requêtes
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
+// Middleware pour gérer les erreurs 404
+app.use((req, res, next) => {
+  res.status(404).send("Désolé, la page demandée n'existe pas");
+});
+
+// Middleware pour gérer les erreurs 500
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Quelque chose s'est mal passé!");
+});
+
+// Autoriser les requêtes CORS
 app.use(
   cors({
     origin: "https://nouno3001.github.io/CarambarSelectionCDA/",
