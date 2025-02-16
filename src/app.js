@@ -21,7 +21,11 @@ app.get("/", (req, res) => {
     message: "Bienvenue sur notre site!",
   });
 });
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://nouno3001.github.io/CarambarSelectionCDA/",
+  })
+);
 
 app.use(bodyParser.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
