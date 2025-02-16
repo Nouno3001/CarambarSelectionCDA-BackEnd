@@ -1,30 +1,147 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "info": {
-    "version": "1.0.0",
-    "title": "API Carambar",
-    "description": "Documentation de l'API pour récupérer des blagues Carambar"
+    "title": "Carambar & Co API",
+    "version": "v1"
   },
   "paths": {
-    "/blagues": {
+    "/api/v1/jokes": {
       "get": {
-        "summary": "Récupérer une blague",
+        "summary": "Récupérer toutes les blagues",
         "responses": {
           "200": {
-            "description": "Une blague aléatoire",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "joke": {
-                  "type": "string",
-                  "example": "Pourquoi les plongeurs plongent-ils toujours en arrière et jamais en avant ?"
-                },
-                "answer": {
-                  "type": "string",
-                  "example": "Parce que s'ils plongent en avant, ils tombent dans l'eau !"
+            "description": "Liste des blagues",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "description": "ID de la blague"
+                      },
+                      "joke": {
+                        "type": "string",
+                        "description": "Texte de la blague"
+                      }
+                    }
+                  }
                 }
               }
             }
+          }
+        }
+      },
+      "post": {
+        "summary": "Ajouter une nouvelle blague",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "joke": {
+                    "type": "string",
+                    "description": "Texte de la blague"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Blague créée avec succès",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "ID de la blague"
+                    },
+                    "joke": {
+                      "type": "string",
+                      "description": "Texte de la blague"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/jokes/{id}": {
+      "get": {
+        "summary": "Récupérer une blague par son ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "ID de la blague"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Blague trouvée",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "ID de la blague"
+                    },
+                    "joke": {
+                      "type": "string",
+                      "description": "Texte de la blague"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Blague non trouvée"
+          }
+        }
+      }
+    },
+    "/api/v1/jokes/random": {
+      "get": {
+        "summary": "Récupérer une blague aléatoire",
+        "responses": {
+          "200": {
+            "description": "Blague aléatoire",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "ID de la blague"
+                    },
+                    "joke": {
+                      "type": "string",
+                      "description": "Texte de la blague"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Aucune blague disponible"
           }
         }
       }

@@ -1,0 +1,20 @@
+// Path : projet_selection_CDA_back/src/views/users/profile.pug
+extends ../layout/main
+block content
+  h2 Profile
+    p Nom : #{user.nom}
+    p Prénom : #{user.prenom}
+    p Email : #{user.email}
+    p Date de naissance : #{user.date_naissance}
+    p Adresse : #{user.adresse}
+    p Code postal : #{user.code_postal}
+    p Ville : #{user.ville}
+    p Pays : #{user.pays}
+    p Téléphone : #{user.telephone}
+    p Rôle : #{user.role}
+    p Date de création : #{user.createdAt}
+    p Date de modification : #{user.updatedAt}
+    a(href='/users/edit/#{user.id}') Modifier
+    a(href='/users/delete/#{user.id}') Supprimer
+    a(href='/users') Retour à la liste des utilisateurs
+```

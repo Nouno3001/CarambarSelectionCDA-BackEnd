@@ -1,0 +1,9 @@
+// Path : projet_selection_CDA_back/src/views/users/index.pug
+extends ../layout/main
+block content
+  h2 Users
+    ul
+        each user in users
+        li=user.username
+    include ../partials/footer
+```
