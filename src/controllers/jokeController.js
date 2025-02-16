@@ -1,21 +1,12 @@
 // src/controllers/jokeController.js, Contrôleurs pour gérer les blagues
 
 // const Joke = require("../models/Joke");
-const Joke = require("../models");
+// const Joke = require("../models");
 const sequelize = require("sequelize");
 
 // ****************************************************************************
 
-const getJokes = async (req, res) => {
-  try {
-    const jokes = await Joke.findAll();
-    res.status(200).json(jokes);
-  } catch (error) {
-    res
-      .status(500)
-      .json({ error: "Erreur lors de la récupération des blagues" });
-  }
-};
+const Joke = require("../models/Joke");
 
 // ****************************************************************************
 // Ajouter une blague
@@ -49,7 +40,9 @@ const getAllJokes = async (req, res) => {
     const jokes = await Joke.findAll();
     res.status(200).json(jokes);
   } catch (error) {
-    // res.status(500).json({ error: error.message });
+    res
+      .status(500)
+      .json({ error: "Erreur lors de la récupération des blagues" });
   }
 };
 // ****************************************************************************
@@ -117,7 +110,6 @@ const getRandomJoke = async (req, res) => {
 };
 
 module.exports = {
-  getJokes,
   addJoke,
   getAllJokes,
   getJokeById,

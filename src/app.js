@@ -1,13 +1,26 @@
+// Importer le module express
 const express = require("express");
+// Importer le module path
 const path = require("path");
+// Importer le module body-parser
 const bodyParser = require("body-parser");
+// Importer le module CORS
 const cors = require("cors");
+// Importer les routes
 const jokeRoutes = require("./routes/jokeRoutes");
+// Swagger
 const swaggerUi = require("swagger-ui-express");
+// Importer le document Swagger
 const swaggerDocument = require("./swagger/swagger.json");
+// Charger les variables d'environnement
 require("dotenv").config();
 
+// Créer une application express
 const app = express();
+
+// Définir le répertoire statique
+// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "index.html")));
 
 // Définir le moteur de vue sur Pug
 app.set("view engine", "pug");
@@ -15,6 +28,8 @@ app.set("view engine", "pug");
 // Définir le répertoire des vues
 app.set("views", path.join(__dirname, "views"));
 
+// Définir les routes
+// Route pour la page d'accueil
 app.get("/", (req, res) => {
   res.render("index", {
     title: "Accueil",
