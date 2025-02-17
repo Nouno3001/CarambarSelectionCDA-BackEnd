@@ -29,11 +29,47 @@ app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
 // Définir les routes
+// Routes
+const jokeRoutes = require("./routes/jokeRoutes");
+app.use("/api/blagues", jokeRoutes);
+
 // Route pour la page d'accueil
 app.get("/", (req, res) => {
   res.render("index", {
     title: "Accueil",
     message: "Bienvenue sur notre site!",
+  });
+});
+
+// Route pour la page à propos
+app.get("/about", (req, res) => {
+  res.render("about", {
+    title: "À propos",
+    message: "À propos de nous",
+  });
+});
+
+// Route pour la page de contact
+app.get("/contact", (req, res) => {
+  res.render("contact", {
+    title: "Contact",
+    message: "Contactez-nous",
+  });
+});
+
+// Route pour la page de Blagues
+app.get("/jokes/:id", (req, res) => {
+  res.render("joke", {
+    title: "Blague",
+    message: "Blague",
+  });
+});
+
+// Route pour la page de Blagues
+app.get("/jokes", (req, res) => {
+  res.render("jokes", {
+    title: "Blagues",
+    message: "Blagues",
   });
 });
 
@@ -57,19 +93,34 @@ app.use((err, req, res, next) => {
 });
 
 // Autoriser les requêtes CORS
+app.use(cors());
+app.use(express.json());
 app.use(
   cors({
     origin: "https://nouno3001.github.io/CarambarSelectionCDA/",
   })
 );
 
+// Utiliser body-parser
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Utiliser body-parser pour les requêtes JSON
+
 app.use(bodyParser.json());
+
+// Swagger
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Routes
 app.use("/api", jokeRoutes); // On préfixe les routes par /api
 
+// Démarrer le serveur
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur le port ${PORT}`);
 });
+
+// Exporter l'application
+
+module.exports = app;
