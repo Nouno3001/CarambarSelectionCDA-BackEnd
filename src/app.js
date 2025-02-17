@@ -94,12 +94,13 @@ app.use((err, req, res, next) => {
 
 // Autoriser les requêtes CORS
 app.use(cors());
+app.use(cors("https://github.com/Nouno3001/CarambarSelectionCDA.git"));
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://nouno3001.github.io/CarambarSelectionCDA/",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://nouno3001.github.io/CarambarSelectionCDA/",
+//   })
+// );
 
 // Utiliser body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
