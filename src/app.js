@@ -1,3 +1,5 @@
+import { initDB } from "./bdd.js";
+
 // Importer le module express
 const express = require("express");
 // Importer le module path
@@ -18,6 +20,8 @@ require("dotenv").config();
 // Créer une application express
 const app = express();
 
+initDB();
+
 // Définir le répertoire statique
 // app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "index.html")));
@@ -32,6 +36,34 @@ app.set("views", path.join(__dirname, "views"));
 // Routes
 const jokeRoutes = require("./routes/jokeRoutes");
 app.use("/api/blagues", jokeRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+// Importer le modèle Joke
+const Joke = require("./models/Joke");
+
+// Importer le module Sequelize
+const { Sequelize } = require("sequelize");
+
+// Créer une instance de Sequelize
+const sequelize = new Sequelize({
+  dialect: "sqlite",
+  storage: "bdd.sqlite",
+});
+
+// Définir le modèle Joke
+const Joke = sequelize.define("Joke", {
+  content: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  answer: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+});
 
 // Route pour la page d'accueil
 app.get("/", (req, res) => {
